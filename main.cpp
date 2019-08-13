@@ -22,6 +22,26 @@ namespace ngraph {
    namespace runtime {
        namespace Backend {
 
+
+           /*
+
+ 38│ std::shared_ptr<runtime::Backend> runtime::Backend::create(const string& type,
+ 39│                                                            bool must_support_dynamic)
+ 40│ {
+ 41│     auto inner_backend = BackendManager::create_backend(type);
+ 42│
+ 43├    if (!must_support_dynamic || inner_backend->supports_dynamic_tensors())
+ 44│     {
+ 45│         return inner_backend;
+ 46│     }
+ 47│     else
+ 48│     {
+ 49│         return make_shared<runtime::dynamic::DynamicBackend>(inner_backend);
+ 50│     }
+ 51│ }
+
+           */
+
                std::shared_ptr<BackendCPU> create(const char *name="CPU")
                {
                   
