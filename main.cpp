@@ -16,7 +16,7 @@ struct BackendCPU {
     BackendCPU(int num) : num{num} {}
 };
 
-
+std::shared_ptr<BackendCPU> single_bck; 
 
 namespace ngraph {
    namespace runtime {
@@ -24,6 +24,9 @@ namespace ngraph {
 
                std::shared_ptr<BackendCPU> create(const char *name="CPU")
                {
+                  
+                  
+                 //  return single_bck;
 
                    return std::make_shared<BackendCPU>(2);
                }
@@ -83,6 +86,8 @@ int main(int argc, char **argv) {
       
    }
  
+   single_bck = std::make_shared<BackendCPU>(2);
+
    log("Run test with " << num_threads  << " threads");
    
    std::mutex mx;
