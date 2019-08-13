@@ -1,0 +1,21 @@
+  Thread T2 (tid=32383, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x000000027577)
+    #1 std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) <null> (libstdc++.so.6+0x0000000b8dc2)
+    #2 void __gnu_cxx::new_allocator<std::thread>::construct<std::thread, main::{lambda()#1}>(std::thread*, main::{lambda()#1}&&) <null> (prog+0x000000402685)
+    #3 void std::allocator_traits<std::allocator<std::thread> >::construct<std::thread, main::{lambda()#1}>(std::allocator<std::thread>&, std::thread*, main::{lambda()#1}&&) <null> (prog+0x00000040236a)
+    #4 void std::vector<std::thread, std::allocator<std::thread> >::_M_emplace_back_aux<main::{lambda()#1}>(main::{lambda()#1}&&) <null> (prog+0x000000402420)
+    #5 void std::vector<std::thread, std::allocator<std::thread> >::emplace_back<main::{lambda()#1}>(main::{lambda()#1}&&) <null> (prog+0x000000402306)
+    #6 main <null> (prog+0x0000004020ef)
+
+  Thread T3 (tid=32384, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x000000027577)
+    #1 std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) <null> (libstdc++.so.6+0x0000000b8dc2)
+    #2 void __gnu_cxx::new_allocator<std::thread>::construct<std::thread, main::{lambda()#1}>(std::thread*, main::{lambda()#1}&&) <null> (prog+0x000000402685)
+    #3 void std::allocator_traits<std::allocator<std::thread> >::construct<std::thread, main::{lambda()#1}>(std::allocator<std::thread>&, std::thread*, main::{lambda()#1}&&) <null> (prog+0x00000040236a)
+    #4 void std::vector<std::thread, std::allocator<std::thread> >::_M_emplace_back_aux<main::{lambda()#1}>(main::{lambda()#1}&&) <null> (prog+0x000000402420)
+    #5 void std::vector<std::thread, std::allocator<std::thread> >::emplace_back<main::{lambda()#1}>(main::{lambda()#1}&&) <null> (prog+0x000000402306)
+    #6 main <null> (prog+0x0000004020ef)
+
+SUMMARY: ThreadSanitizer: data race ??:0 std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_weak_release()
+==================
+Segmentation fault (core dumped)

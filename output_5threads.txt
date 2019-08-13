@@ -1,0 +1,16 @@
+  Thread T1 (tid=32464, finished) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x000000027577)
+    #1 std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) <null> (libstdc++.so.6+0x0000000b8dc2)
+    #2 void __gnu_cxx::new_allocator<std::thread>::construct<std::thread, main::{lambda()#1}>(std::thread*, main::{lambda()#1}&&) <null> (prog+0x000000402685)
+    #3 void std::allocator_traits<std::allocator<std::thread> >::construct<std::thread, main::{lambda()#1}>(std::allocator<std::thread>&, std::thread*, main::{lambda()#1}&&) <null> (prog+0x00000040236a)
+    #4 void std::vector<std::thread, std::allocator<std::thread> >::_M_emplace_back_aux<main::{lambda()#1}>(main::{lambda()#1}&&) <null> (prog+0x000000402420)
+    #5 void std::vector<std::thread, std::allocator<std::thread> >::emplace_back<main::{lambda()#1}>(main::{lambda()#1}&&) <null> (prog+0x000000402306)
+    #6 main <null> (prog+0x0000004020ef)
+
+SUMMARY: ThreadSanitizer: data race ??:0 std::__weak_ptr<BackendCPU, (__gnu_cxx::_Lock_policy)2>& std::__weak_ptr<BackendCPU, (__gnu_cxx::_Lock_policy)2>::operator=<BackendCPU>(std::__shared_ptr<BackendCPU, (__gnu_cxx::_Lock_policy)2> const&)
+==================
+start thread 3 id=140489941579520
+start thread 4 id=140489901733632
+Segmentation fault (core dumped)
+pawepiot@pawepiot-X299-AORUS-Gaming-3-Pro:~/pe_test$ ./prog 5
+
